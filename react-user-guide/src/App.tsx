@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import UserGuide from "./components/UserGuide/index"
-import './App.css'
+import { useState } from "react";
+import UserGuide from "./components/UserGuide/index";
+import "./App.css";
 interface Props {
   x: string | number;
   y: string | number;
@@ -10,6 +10,7 @@ interface Props {
   prevTxt?: string;
   nextTxt?: string;
 }
+
 function App() {
   const [guideIndex, setGuideIndex] = useState<number>(0);
   const guideConfig: Props[] = [
@@ -70,7 +71,7 @@ function App() {
   ];
   const guidePrev = () => {
     if (guideIndex !== 0) {
-      setGuideIndex(guideIndex - 1)
+      setGuideIndex(guideIndex - 1);
     }
   };
   const guideNext = () => {
@@ -78,8 +79,8 @@ function App() {
   };
   return (
     <>
-      {
-        guideIndex < guideConfig.length ? <UserGuide
+      {guideIndex < guideConfig.length ? (
+        <UserGuide
           x={guideConfig[guideIndex].x}
           y={guideConfig[guideIndex].y}
           width={guideConfig[guideIndex].width}
@@ -89,12 +90,13 @@ function App() {
           nextTxt={guideConfig[guideIndex].nextTxt}
           prev={guidePrev}
           next={guideNext}
-        /> : ""
-      }
-
+        />
+      ) : (
+        ""
+      )}
       这是页面主体
     </>
-  )
+  );
 }
 
-export default App
+export default App;
