@@ -1,33 +1,87 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import UserGuide from "./components/UserGuide/index"
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [guideIndex, setGuideIndex] = useState<number>(0);
+  const guideConfig = [
+    {
+      x: "0px",
+      y: "30px",
+      width: "0px",
+      height: "0px",
+      tips: "这是引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一引导用语一",
+      prevTxt: "",
+      nextTxt: "继续",
+    },
+    {
+      x: "10px",
+      y: "10px",
+      width: "25vw",
+      height: "16vw",
+      tips: "引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2引导用语2",
+      prevTxt: "上一步",
+      nextTxt: "继续",
+    },
+    {
+      x: "26vw",
+      y: "10px",
+      width: "25vw",
+      height: "16vw",
+      tips: "引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3引导语3",
+      prevTxt: "上一步",
+      nextTxt: "继续",
+    },
+    {
+      x: "49vw",
+      y: "10px",
+      width: "25vw",
+      height: "16vw",
+      tips: "4444444444444444444444444444444444444444444444444444444444444444444444444444444444444",
+      prevTxt: "上一步",
+      nextTxt: "继续",
+    },
+    {
+      x: "calc(75vw - 10px)",
+      y: "10px",
+      width: "25vw",
+      height: "16vw",
+      tips: "5555555555555555555555555555555555555555555555555555555555555555555555555",
+      prevTxt: "上一步",
+      nextTxt: "继续",
+    },
+    {
+      x: "0px",
+      y: "30px",
+      width: "0px",
+      height: "0px",
+      tips: "666666666666666666666666666666666666666666666666666666666666666666666",
+      prevTxt: "上一步",
+      nextTxt: "我知道了",
+    },
+  ];
+  const guidePrev = () => {
+    if (guideIndex !== 0) {
+      setGuideIndex(guideIndex - 1)
+    }
+  };
+  const guideNext = () => {
+    setGuideIndex(guideIndex + 1);
+  };
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <UserGuide
+        x={guideConfig[guideIndex].x}
+        y={guideConfig[guideIndex].y}
+        width={guideConfig[guideIndex].width}
+        height={guideConfig[guideIndex].height}
+        tips={guideConfig[guideIndex].tips}
+        prevTxt={guideConfig[guideIndex].prevTxt}
+        nextTxt={guideConfig[guideIndex].nextTxt}
+        prev={guidePrev}
+        next={guideNext}
+      />
+      这是页面主体
     </>
   )
 }
