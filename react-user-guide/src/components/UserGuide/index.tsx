@@ -1,5 +1,17 @@
 import "./index.css"
-export default function UserGuide(props) {
+
+interface Props {
+    x: string | number;
+    y: string | number;
+    width: string | number;
+    height: string;
+    tips?: string;
+    prevTxt?: string;
+    nextTxt?: string;
+    prev?: () => void;
+    next?: () => void
+}
+export default function UserGuide(props: Props) {
     const { x, y, width, height, tips, prevTxt, nextTxt, prev, next } = props
     return <div className="userGuideContent">
         <div

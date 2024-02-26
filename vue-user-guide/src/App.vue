@@ -13,11 +13,19 @@
     @prev="guidePrev"
     @next="guideNext"
   />
-  
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
 import UserGuide from "./components/UserGuide.vue";
+interface Props {
+  x: string | number;
+  y: string | number;
+  width: string | number;
+  height: string;
+  tips?: string;
+  prevTxt?: string;
+  nextTxt?: string;
+}
 const guideIndex = ref<number>(0);
 const guidePrev = () => {
   if (guideIndex.value !== 0) {
@@ -27,7 +35,7 @@ const guidePrev = () => {
 const guideNext = () => {
   ++guideIndex.value;
 };
-const guideConfig = [
+const guideConfig: Props[] = [
   {
     x: "0px",
     y: "30px",
@@ -60,7 +68,7 @@ const guideConfig = [
     y: "10px",
     width: "25vw",
     height: "16vw",
-    tips: "4444444444444444444444444444444444444444444444444444444444444444444444444444444444444",
+    tips: "四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四四",
     prevTxt: "上一步",
     nextTxt: "继续",
   },
@@ -69,7 +77,7 @@ const guideConfig = [
     y: "10px",
     width: "25vw",
     height: "16vw",
-    tips: "5555555555555555555555555555555555555555555555555555555555555555555555555",
+    tips: "五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五五",
     prevTxt: "上一步",
     nextTxt: "继续",
   },
@@ -78,7 +86,7 @@ const guideConfig = [
     y: "30px",
     width: "0px",
     height: "0px",
-    tips: "666666666666666666666666666666666666666666666666666666666666666666666",
+    tips: "六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六六",
     prevTxt: "上一步",
     nextTxt: "我知道了",
   },
